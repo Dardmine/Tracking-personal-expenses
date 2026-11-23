@@ -1,0 +1,36 @@
+{{define "stats_content"}}
+<p>Выберите период для диаграммы по категориям и год для диаграммы по месяцам.</p>
+
+<div class="filters">
+    <label>Период с:
+        <input type="date" id="from" name="from">
+    </label>
+    <label>по:
+        <input type="date" id="to" name="to">
+    </label>
+    <button type="button" id="applyPeriod">Применить период</button>
+
+    <label>Год:
+        <select id="year">
+            {{range .Years}}
+                <option value="{{.}}" {{if eq . $.SelectedYear}}selected{{end}}>{{.}}</option>
+            {{else}}
+                <option value="">Нет данных</option>
+            {{end}}
+        </select>
+    </label>
+</div>
+
+<div class="charts">
+    <div class="chart-box">
+        <h2>По категориям</h2>
+        <canvas id="catChart"></canvas>
+    </div>
+    <div class="chart-box">
+        <h2>По месяцам</h2>
+        <canvas id="monthChart"></canvas>
+    </div>
+</div>
+
+<noscript><p>Для отображения графиков нужен JavaScript.</p></noscript>
+{{end}}

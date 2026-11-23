@@ -1,0 +1,11 @@
+{{define "edit_content"}}
+<h2>Редактировать трату</h2>
+<form method="POST" action="/expenses/update">
+    <input type="hidden" name="id" value="{{.ID}}">
+    <p>Сумма: <input type="number" step="0.01" name="amount" value="{{.Amount}}" required></p>
+    <p>Описание: <input type="text" name="description" value="{{.Description}}" required></p>
+    <p>Дата: <input type="date" name="date" value="{{.Date}}" required></p>
+    <button type="submit">Сохранить</button>
+</form>
+<a href="/expenses">Отмена</a>
+{{end}}

@@ -1,0 +1,18 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Учёт трат</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2em auto; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <header><h1>Мои траты</h1></header>
+    <main>{{template "content" .}}</main>
+</body>
+</html>
+{{end}}

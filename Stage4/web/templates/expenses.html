@@ -1,0 +1,49 @@
+{{define "expenses_content"}}
+<h2>Список трат</h2>
+
+<form method="GET" action="/expenses" class="filters">
+    <label>Категория:
+        <select name="category_id">
+            <option value="">Все</option>
+            {{range .Categories}}
+                <option value="{{.ID}}" {{if eq .ID $.Selected}}selected{{end}}>{{.Name}}</option>
+            {{end}}
+        </select>
+    </label>
+    <label>С: <input type="date" name="from" value="{{.From}}"></label>
+    <label>По: <input type="date" name="to" value="{{.To}}"></label>
+    <button type="submit">Фильтр</button>
+</form>
+
+<table>
+    <tr><th>ID</th><th>Сумма</th><th>Категория</th><th>Описание</th><th>Дата</th><th></th></tr>
+    {{range .Items}}
+    <tr>
+        <td>{{.ID}}</td>
+        <td>{{.Amount}}</td>
+        <td>{{.CategoryName}}</td>
+        <td>{{.Description}}</td>
+        <td>{{.Date}}</td>
+        <td>
+            <a href="/expenses/edit?id={{.ID}}">✏️</a>
+            <a href="/expenses/delete?id={{.ID}}" onclick="return confirm('Удалить?')">🗑️</a>
+        </td>
+    </tr>
+    {{end}}
+</table>
+
+<h2>Добавить трату</h2>
+<form method="POST" action="/expenses/add">
+    <p>Сумма: <input type="number" step="0.01" name="amount" required></p>
+    <p>Описание: <input type="text" name="description" required></p>
+    <p>Дата: <input type="date" name="date" required></p>
+    <p>Категория:
+        <select name="category_id">
+            {{range .Categories}}
+                <option value="{{.ID}}">{{.Name}}</option>
+            {{end}}
+        </select>
+    </p>
+    <button type="submit">Добавить</button>
+</form>
+{{end}}

@@ -1,0 +1,31 @@
+{{define "layout_stats"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика — Учёт трат</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 2em auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; }
+        nav a { margin-left: 1em; }
+        .filters { margin-bottom: 1em; display: flex; gap: 1em; flex-wrap: wrap; align-items: end; }
+        .filters label { display: flex; flex-direction: column; font-size: 0.9em; }
+        .charts { display: flex; gap: 2em; flex-wrap: wrap; }
+        .chart-box { width: 400px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Статистика</h1>
+        <nav>
+            <a href="/expenses">К списку трат</a>
+            <a href="/logout">Выйти</a>
+        </nav>
+    </header>
+    <main>{{template "stats_content" .}}</main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/stats.js"></script>
+</body>
+</html>
+{{end}}

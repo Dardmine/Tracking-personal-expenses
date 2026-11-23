@@ -1,0 +1,25 @@
+{{define "layout_edit"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование — Учёт трат</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 2em auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; }
+        nav a { margin-left: 1em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Мои траты</h1>
+        <nav>
+            <a href="/expenses">Список</a>
+            <a href="/stats">Статистика</a>
+            <a href="/logout">Выйти</a>
+        </nav>
+    </header>
+    <main>{{template "edit_content" .}}</main>
+</body>
+</html>
+{{end}}
